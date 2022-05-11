@@ -74,7 +74,7 @@ const UpdateForm = () => {
       <input type="number" step="1" id="ColorQuantity" /> <br></br>
       <label>Cost: </label>
       <input type="number" step="0.01" id="Cost"/><br></br>
-      <input type="submit" value="Add Art" />
+      <input type="submit" value="Update Art" />
     </form>
     </div>
   )
