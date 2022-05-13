@@ -4,7 +4,7 @@ const UpdateOrder = () => {
 
     function handleFinder(e){
         e.preventDefault();
-        fetch("https://localhost:7143/api/customer/" + document.getElementById("orderId").value)
+        fetch("https://localhost:7143/api/order/" + document.getElementById("orderId").value)
         .then(response=>{
             if(response.status !== 200){
                 alert("Error: status " + response.status);
@@ -13,27 +13,18 @@ const UpdateOrder = () => {
             return response.json();
         })
         .then(json => {
-            document.getElementById("customerHeader").innerHTML = "Displaying Art ID#" + json.customerId;
-            document.getElementById("customerName").innerHTML = json.firstName + " " + json.lastName;
-            document.getElementById("customerInfo").innerHTML = "Email: " + json.email + "StreetAddress: " + json.streetAddress;
-            document.getElementById("customerMoreInfo").innerHTML = "City: " + json.city + "StateName: " + json.stateName + "ZipCode: " + json.zipCode + "PhoneNumber: " + json.phoneNumber;
+            document.getElementById("orderHeader").innerHTML = "Displaying Order ID#" + json.orderId;
+            document.getElementById("orderDate").innerHTML = json.orderDate;
         });
     }
     function handleFiller(e){
         e.preventDefault();
 
-        let customer = {
-            FirstName: document.getElementById("FirstName").value,
-            LastName: document.getElementById("LastName").value,
-            Email: document.getElementById("Email").value,
-            StreetAddress: document.getElementById("StreetAddress").value,
-            City: document.getElementById("City").value,
-            StateName: document.getElementById("StateName").value,
-            ZipCode: document.getElementById("ZipCode").value,
-            PhoneNumber: document.getElementById("PhoneNumber").value
+        let order = {
+            orderDate: document.getElementById("orderDate").value
         }
 
-        const url = "https://localhost:7143/api/customer";
+        const url = "https://localhost:7143/api/order";
 
         const init = {
             method: "PUT",
@@ -41,7 +32,7 @@ const UpdateOrder = () => {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
             },
-            body: JSON.stringify(customer)
+            body: JSON.stringify(order)
         };
 
         fetch(url, init)
@@ -50,7 +41,7 @@ const UpdateOrder = () => {
                 alert("error: " + response.status);
             }
             else{
-                alert("Successfully updated customer " + document.getElementById("customerId").value)
+                alert("Successfully updated order " + document.getElementById("orderId").value)
             }
 
         })
@@ -61,28 +52,14 @@ const UpdateOrder = () => {
     <br/>
     <h3>UPDATE</h3>
     <form name = "update-order" onSubmit = {handleFinder}>
-        <label>Customer ID: </label>
-        <input type= "number" id="customerId"></input>
+        <label>Order ID: </label>
+        <input type= "number" id="orderId"></input>
         <input type="submit" value="Find"></input>
     </form>
     <form name = "update-order" onSubmit = {handleFiller}>
-    <label>First Name: </label>
-      <input type="text" name="FirstName" id="FirstName"/><br></br>
-      <label>Last Name: </label>
-      <input type="text" name="LastName" id="LastName"/><br></br>
-      <label>Email: </label>
-      <input type = "text" name="Email" id="Email" /> <br></br>
-      <label>Street Address: </label>
-      <input type = "text" name="StreetAddress" id="StreetAddress" /> <br></br>
-      <label>City: </label>
-      <input type = "text" name="City" id="City" /> <br></br>
-      <label>State Name: </label>
-      <input type = "text" name="StateName" id="StateName" /> <br></br>
-      <label>Zip Code: </label>
-      <input type = "text" name="ZipCode" id="ZipCode" /> <br></br>
-      <label>Phone Number: </label>
-      <input type = "text" name="PhoneNumber" id="PhoneNumber" /> <br></br>
-      <input type="submit" value="Update Customer" />
+    <label>Order Date: </label>
+      <input type="text" name="orderDate" id="orderDate"/><br></br>
+      <input type="submit" value="Update Order" />
     </form>
     </div>
   )
