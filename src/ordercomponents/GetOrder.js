@@ -15,8 +15,6 @@ const GetOrder = () => {
         .then(json => {
             document.getElementById("orderHeader").innerHTML = "Displaying Order ID#" + json.orderId;
             document.getElementById("orderDate").innerHTML = json.orderDate;
-            document.getElementById("customerInfo").innerHTML = "Email: " + json.email + "StreetAddress: " + json.streetAddress;
-            document.getElementById("customerMoreInfo").innerHTML = "City: " + json.city + "StateName: " + json.stateName + "ZipCode: " + json.zipCode + "PhoneNumber: " + json.phoneNumber;
         });
     }
 
@@ -25,14 +23,12 @@ const GetOrder = () => {
     <br/>
     <h3>SEARCH</h3>
     <form name = "select-order" onSubmit = {handleSubmit}>
-        <label>Customer ID: </label>
-        <input type= "number" id="customerId"></input>
+        <label>Order ID: </label>
+        <input type= "number" id="orderId"></input>
         <input type="submit" value="View"></input>
     </form>
-    <h5 id = "customerHeader"></h5>
-    <p id = "customerName"></p>
-    <p id = "customerInfo"></p>
-    <p id = "customerMoreInfo"></p>
+    <h5 id = "orderHeader"></h5>
+    <p id = "orderDate"></p>
     </div>
   )
 }
