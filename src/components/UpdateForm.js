@@ -28,7 +28,8 @@ const UpdateForm = () => {
             Width: document.getElementById("Width").value,
             MaterialQuantity: document.getElementById("MaterialQuantity").value,
             ColorQuantity: document.getElementById("ColorQuantity").value,
-            Cost: document.getElementById("Cost").value
+            Cost: document.getElementById("Cost").value,
+            AdvancedFeatureId: document.getElementById("AdvancedFeatureId").value
         }
 
         const url = "https://localhost:7143/api/art";
@@ -74,6 +75,8 @@ const UpdateForm = () => {
       <input type="number" step="1" id="ColorQuantity" /> <br></br>
       <label>Cost: </label>
       <input type="number" step="0.01" id="Cost"/><br></br>
+      <label>AdvancedFeatureId: </label>
+      <input type = "number" id = "AdvancedFeatureId" /> <br></br>
       <input type="submit" value="Update Art" />
     </form>
     </div>

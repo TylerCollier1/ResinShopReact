@@ -13,7 +13,7 @@ const UpdateForm2 = () => {
             return response.json();
         })
         .then(json => {
-            document.getElementById("customerHeader").innerHTML = "Displaying Art ID#" + json.customerId;
+            document.getElementById("customerHeader").innerHTML = "Displaying Customer ID#" + json.customerId;
             document.getElementById("customerName").innerHTML = json.firstName + " " + json.lastName;
             document.getElementById("customerInfo").innerHTML = "Email: " + json.email + "StreetAddress: " + json.streetAddress;
             document.getElementById("customerMoreInfo").innerHTML = "City: " + json.city + "StateName: " + json.stateName + "ZipCode: " + json.zipCode + "PhoneNumber: " + json.phoneNumber;
@@ -23,6 +23,7 @@ const UpdateForm2 = () => {
         e.preventDefault();
 
         let customer = {
+            CustomerId: document.getElementById("customerId").value,
             FirstName: document.getElementById("FirstName").value,
             LastName: document.getElementById("LastName").value,
             Email: document.getElementById("Email").value,
