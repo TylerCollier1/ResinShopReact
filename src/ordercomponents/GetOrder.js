@@ -13,8 +13,9 @@ const GetOrder = () => {
             return response.json();
         })
         .then(json => {
-            document.getElementById("orderHeader").innerHTML = "Displaying Order ID#" + json.orderId;
-            document.getElementById("orderDate").innerHTML = json.orderDate;
+            document.getElementById("orderHeader").innerHTML = "Displaying Order ID #: " + json.orderId;
+            document.getElementById("orderDate").innerHTML = "Order Date: " + json.orderDate;
+            document.getElementById("orderInfo").innerHTML = "CustomerId: " + json.customerId + " ArtId: " + json.artId;
         });
     }
 
@@ -29,6 +30,7 @@ const GetOrder = () => {
     </form>
     <h5 id = "orderHeader"></h5>
     <p id = "orderDate"></p>
+    <p id = "orderInfo"></p>
     </div>
   )
 }

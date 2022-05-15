@@ -6,7 +6,9 @@ const AddOrder = () => {
 
 
         let order = {
-            OrderDate: document.getElementById("OrderDate").value
+            OrderDate: document.getElementById("OrderDate").value,
+            CustomerId: document.getElementById("CustomerId").value,
+            ArtId: document.getElementById("ArtId").value
         }
 
         const url = "https://localhost:7143/api/order";
@@ -40,6 +42,10 @@ const AddOrder = () => {
     <form name = "add-order" onSubmit = {handleSubmit}>
       <label>Order Date: </label>
       <input type="text" name="OrderDate" id="OrderDate"/><br></br>
+      <label>CustomerId: </label>
+      <input type = "number" id = "CustomerId" /> <br></br>
+      <label>ArtId: </label>
+      <input type = "number" id = "ArtId" /> <br></br>
       <input type="submit" value="Add Order" />
     </form>
     </>

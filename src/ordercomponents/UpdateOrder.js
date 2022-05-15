@@ -15,13 +15,17 @@ const UpdateOrder = () => {
         .then(json => {
             document.getElementById("orderHeader").innerHTML = "Displaying Order ID#" + json.orderId;
             document.getElementById("orderDate").innerHTML = json.orderDate;
+            document.getElementById("orderInfo").innerHTML = "CustomerId: " + json.customerId + " ArtId: " + json.artId;
         });
     }
     function handleFiller(e){
         e.preventDefault();
 
         let order = {
-            orderDate: document.getElementById("orderDate").value
+            orderId: document.getElementById("orderId").value,
+            orderDate: document.getElementById("orderDate").value,
+            CustomerId: document.getElementById("CustomerId").value,
+            ArtId: document.getElementById("ArtId").value
         }
 
         const url = "https://localhost:7143/api/order";
@@ -59,6 +63,10 @@ const UpdateOrder = () => {
     <form name = "update-order" onSubmit = {handleFiller}>
     <label>Order Date: </label>
       <input type="text" name="orderDate" id="orderDate"/><br></br>
+      <label>CustomerId: </label>
+      <input type = "number" id = "CustomerId" /> <br></br>
+      <label>ArtId: </label>
+      <input type = "number" id = "ArtId" /> <br></br>
       <input type="submit" value="Update Order" />
     </form>
     </div>
